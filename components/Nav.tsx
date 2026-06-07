@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
@@ -71,15 +72,17 @@ export default function Nav({ lang, c }: { lang: Lang; c: Content }) {
         </div>
       </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] flex flex-col bg-white px-6 pb-10 pt-5 lg:hidden"
-          >
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                initial={false}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="fixed inset-0 z-[100] flex h-[100dvh] w-screen flex-col bg-white px-6 pb-10 pt-5 lg:hidden"
+              >
             <div className="flex h-11 items-center justify-between">
               <Wordmark />
               <button
@@ -127,9 +130,11 @@ export default function Nav({ lang, c }: { lang: Lang; c: Content }) {
                 {c.nav.waitlist}
               </Link>
             </div>
-          </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </header>
   );
 }
