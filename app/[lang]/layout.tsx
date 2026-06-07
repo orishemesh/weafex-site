@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -50,6 +51,7 @@ export default function LangLayout({
   return (
     <html lang={lang} dir={isRtl(lang) ? "rtl" : "ltr"} className={heebo.variable}>
       <body className="font-sans antialiased bg-white text-weafex-navy">
+        <GoogleTagManager gtmId="GTM-TJJS8ZW4" />
         <a href="#main-content" className="skip-link">
           {lang === "he" ? "דלג לתוכן המרכזי" : "Skip to main content"}
         </a>
