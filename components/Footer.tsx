@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Wordmark from "./Wordmark";
 import LangToggle from "./LangToggle";
+import CookieSettingsButton from "./CookieSettingsButton";
 import { type Content, type Lang } from "@/lib/i18n";
 
 export default function Footer({ lang, c }: { lang: Lang; c: Content }) {
@@ -12,6 +13,7 @@ export default function Footer({ lang, c }: { lang: Lang; c: Content }) {
     { href: `${base}/contact`, label: c.nav.contact },
     { href: `${base}/waitlist`, label: c.nav.waitlist },
     { href: `${base}/accessibility`, label: lang === "he" ? "הצהרת נגישות" : "Accessibility" },
+    { href: `${base}/privacy`, label: lang === "he" ? "פרטיות" : "Privacy" },
   ];
 
   return (
@@ -41,6 +43,12 @@ export default function Footer({ lang, c }: { lang: Lang; c: Content }) {
                 </Link>
               </li>
             ))}
+            <li>
+              <CookieSettingsButton
+                label={c.footer.cookieSettings}
+                className="text-sm text-weafex-muted transition-colors hover:text-weafex-navy"
+              />
+            </li>
           </ul>
         </div>
 

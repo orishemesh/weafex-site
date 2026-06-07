@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const SITE = "https://weafex.com";
-const ROUTES = ["", "/about", "/product", "/contact", "/waitlist"];
+const ROUTES = ["", "/about", "/product", "/contact", "/waitlist", "/accessibility", "/privacy"];
 const LANGS = ["he", "en"];
 
 export default function sitemap(): MetadataRoute.Sitemap {

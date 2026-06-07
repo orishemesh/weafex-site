@@ -13,6 +13,7 @@ const config: Config = {
         weafex: {
           blue: "#2563EB", // electric-blue — small accents, links
           coral: "#FF5F5F", // vibrant-coral — rare accent + primary CTA
+          coralDeep: "#C73838", // AA-contrast coral — text/links on light bg (5.18:1)
           navy: "#111827", // dark-navy — primary text/headings
           grey: "#F3F4F6", // cool-grey
           white: "#FFFFFF",

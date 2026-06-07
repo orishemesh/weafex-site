@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
+import CookieConsent from "@/components/CookieConsent";
 import { GoogleTagManager } from "@next/third-parties/google";
 import ClickTracker from "@/components/ClickTracker";
 
@@ -56,7 +57,7 @@ export default function LangLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());",
+              "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('js',new Date());",
           }}
         />
         <GoogleTagManager gtmId="GTM-TJJS8ZW4" />
@@ -91,6 +92,7 @@ export default function LangLayout({
         <PageTransition>{children}</PageTransition>
         <Footer lang={lang} c={c} />
         <AccessibilityWidget />
+        <CookieConsent lang={lang} strings={c.cookie} />
         <ClickTracker />
       </body>
     </html>

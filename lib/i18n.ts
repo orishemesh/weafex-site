@@ -41,7 +41,7 @@ export type Content = {
   nav: { home: string; about: string; product: string; contact: string; waitlist: string };
   waitlistBtn: { button: string; confirmed: string; note: string };
   toggle: { label: string; to: string };
-  footer: { tagline: string; rights: string; prelaunch: string; nav: string };
+  footer: { tagline: string; rights: string; prelaunch: string; nav: string; cookieSettings: string };
 
   home: {
     meta: Meta;
@@ -101,6 +101,17 @@ export type Content = {
     note: string;
     form: FormContent;
   };
+
+  cookie: { body: string; acceptAll: string; onlyEssential: string; policy: string; ariaLabel: string };
+
+  privacy: {
+    meta: Meta;
+    kicker: string;
+    title: string;
+    intro: string;
+    sections: { heading: string; body: string }[];
+    updated: string;
+  };
 };
 
 const EMAIL = "support@weafex.com";
@@ -114,7 +125,7 @@ const he: Content = {
     note: "בלי ספאם. עדכון אחד כשנהיה מוכנים.",
   },
   toggle: { label: "החלפת שפה", to: "EN" },
-  footer: { tagline: "הרשת החברתית של הסחר הבינלאומי.", rights: "כל הזכויות שמורות.", prelaunch: "לפני השקה", nav: "ניווט" },
+  footer: { tagline: "הרשת החברתית של הסחר הבינלאומי.", rights: "כל הזכויות שמורות.", prelaunch: "לפני השקה", nav: "ניווט", cookieSettings: "הגדרות עוגיות" },
 
   home: {
     meta: {
@@ -266,6 +277,28 @@ const he: Content = {
       confirmed: "תודה! אתם ברשימה — נעדכן אתכם ברגע שניפתח.",
     },
   },
+
+  cookie: {
+    body: "אנחנו משתמשים בעוגיות כדי לשפר את החוויה באתר ולהבין כיצד משתמשים בו. אפשר לקבל את כל העוגיות או להסתפק בהכרחיות בלבד.",
+    acceptAll: "אישור הכול",
+    onlyEssential: "רק הכרחיות",
+    policy: "מדיניות עוגיות",
+    ariaLabel: "הודעת עוגיות",
+  },
+
+  privacy: {
+    meta: { title: "מדיניות פרטיות ועוגיות — Weafex", description: "מדיניות הפרטיות והעוגיות של Weafex — איזה מידע נאסף, אילו עוגיות בשימוש, וכיצד לנהל את ההסכמה." },
+    kicker: "פרטיות",
+    title: "מדיניות פרטיות ועוגיות",
+    intro: "Weafex מכבדת את פרטיותך. עמוד זה מסביר בקצרה איזה מידע אנו אוספים, אילו עוגיות בשימוש, וכיצד באפשרותך לנהל את ההסכמה שלך.",
+    sections: [
+      { heading: "אילו עוגיות בשימוש", body: "עוגיות הכרחיות נדרשות לתפעול האתר ולשמירת העדפות (כמו שפה והגדרות נגישות), והן פועלות תמיד. עוגיות אנליטיקה (Google Analytics) עוזרות לנו להבין כיצד משתמשים באתר, ונטענות רק לאחר קבלת הסכמתך." },
+      { heading: "ניהול ההסכמה", body: "בכניסה הראשונה לאתר תוצג הודעת עוגיות. אפשר לבחור ב\u05f4אישור הכול\u05f4 או ב\u05f4רק הכרחיות\u05f4. ניתן לשנות או לבטל את הבחירה בכל עת דרך הקישור \u05f4הגדרות עוגיות\u05f4 בתחתית כל עמוד." },
+      { heading: "המידע שאנחנו אוספים", body: "כשמשאירים פרטים בטופס יצירת הקשר או ברשימת ההמתנה, אנו שומרים את הפרטים שמסרת כדי לחזור אליך. איננו מוכרים מידע אישי לצדדים שלישיים." },
+      { heading: "יצירת קשר", body: "לשאלות בנושא פרטיות ועוגיות אפשר לפנות לכתובת support@weafex.com." },
+    ],
+    updated: "מדיניות זו עודכנה לאחרונה ביוני 2026.",
+  },
 };
 
 const en: Content = {
@@ -277,7 +310,7 @@ const en: Content = {
     note: "No spam. One note when we're ready.",
   },
   toggle: { label: "Switch language", to: "עברית" },
-  footer: { tagline: "The social network of international trade.", rights: "All rights reserved.", prelaunch: "Pre-launch", nav: "Navigate" },
+  footer: { tagline: "The social network of international trade.", rights: "All rights reserved.", prelaunch: "Pre-launch", nav: "Navigate", cookieSettings: "Cookie settings" },
 
   home: {
     meta: {
@@ -427,6 +460,28 @@ const en: Content = {
       submit: "Join the waitlist",
       confirmed: "Thanks! You're on the list — we'll let you know the moment we open.",
     },
+  },
+
+  cookie: {
+    body: "We use cookies to improve your experience and understand how the site is used. You can accept all cookies or keep only the essential ones.",
+    acceptAll: "Accept all",
+    onlyEssential: "Only essential",
+    policy: "Cookie policy",
+    ariaLabel: "Cookie notice",
+  },
+
+  privacy: {
+    meta: { title: "Privacy & Cookie Policy — Weafex", description: "Weafex privacy and cookie policy — what we collect, which cookies we use, and how to manage your consent." },
+    kicker: "Privacy",
+    title: "Privacy & Cookie Policy",
+    intro: "Weafex respects your privacy. This page briefly explains what information we collect, which cookies we use, and how you can manage your consent.",
+    sections: [
+      { heading: "Which cookies we use", body: "Essential cookies are required to run the site and remember your preferences (such as language and accessibility settings), and are always active. Analytics cookies (Google Analytics) help us understand how the site is used and load only after you give consent." },
+      { heading: "Managing your consent", body: "On your first visit a cookie notice appears. You can choose \u201cAccept all\u201d or \u201cOnly essential\u201d. You can change or withdraw your choice at any time via the \u201cCookie settings\u201d link in the footer of every page." },
+      { heading: "Information we collect", body: "When you submit the contact or waitlist form, we keep the details you provide so we can get back to you. We do not sell personal information to third parties." },
+      { heading: "Contact", body: "For privacy and cookie questions, contact support@weafex.com." },
+    ],
+    updated: "This policy was last updated in June 2026.",
   },
 };
 
