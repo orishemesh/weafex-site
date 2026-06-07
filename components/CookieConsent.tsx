@@ -14,9 +14,9 @@ import { isRtl, type Lang } from "@/lib/i18n";
  * RTL-correct. Re-opens when the footer "Cookie settings" link dispatches
  * "weafex:open-consent".
  *
- * Dismissal is deterministic: a brief `closing` state plays the exit transition,
- * then the node is unmounted via state (no AnimatePresence) so it never lingers
- * in the DOM intercepting clicks.
+ * Dismissal is deterministic: choosing an option unmounts the banner immediately
+ * via state (no AnimatePresence/exit timer) so it never lingers in the DOM
+ * intercepting clicks — reliable on first visit and on re-open via the footer.
  */
 
 type Strings = {
@@ -84,7 +84,6 @@ export default function CookieConsent({
   strings: Strings;
 }) {
   const [open, setOpen] = useState(false);
-  const [closing, setClosing] = useState(false);
   const rtl = isRtl(lang);
 
   useEffect(() => {
@@ -94,30 +93,19 @@ export default function CookieConsent({
     } else {
       setOpen(true); // first visit — defaults remain denied until choice
     }
-    const reopen = () => {
-      setClosing(false);
-      setOpen(true);
-    };
+    const reopen = () => setOpen(true);
     window.addEventListener("weafex:open-consent", reopen);
     return () => window.removeEventListener("weafex:open-consent", reopen);
   }, []);
 
-  const dismiss = useCallback(() => {
-    setClosing(true);
-    window.setTimeout(() => {
-      setOpen(false);
-      setClosing(false);
-    }, 300);
+  // Unmount immediately on choice — reliable in every path (first visit and
+  // re-open via the footer link). The entrance still animates; we skip an exit
+  // animation to guarantee the banner never lingers in the DOM.
+  const choose = useCallback((choice: Choice) => {
+    persist(choice);
+    applyConsent(choice);
+    setOpen(false);
   }, []);
-
-  const choose = useCallback(
-    (choice: Choice) => {
-      persist(choice);
-      applyConsent(choice);
-      dismiss();
-    },
-    [dismiss],
-  );
 
   if (!open) return null;
 
@@ -127,7 +115,7 @@ export default function CookieConsent({
       aria-label={strings.ariaLabel}
       dir={rtl ? "rtl" : "ltr"}
       initial={{ opacity: 0, y: 24 }}
-      animate={closing ? { opacity: 0, y: 24 } : { opacity: 1, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
       // bottom-28 on mobile clears the bottom-corner accessibility widget;
       // z below the widget (9999) so the widget stays clickable.
