@@ -5,6 +5,11 @@ import { Check } from "lucide-react";
 import { type FormContent } from "@/lib/i18n";
 import { track } from "@/lib/gtag";
 
+// Zapier webhook that catches form submissions and routes them to the
+// "Weafex - Leads" Google Sheet (Waitlist or Contact tab) + WhatsApp notification.
+// `form_type` ("waitlist" | "contact") is sent in the payload so Zapier can route.
+const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/22284612/4bnavnt/";
+
 const inputCls =
   "mt-2 w-full rounded-xl border border-weafex-line bg-white px-4 py-3 text-weafex-navy outline-none transition-colors placeholder:text-weafex-muted/50 focus:border-weafex-blue";
 
@@ -49,6 +54,27 @@ export default function ContactForm({ f }: { f: FormContent }) {
         const formType = f.subjectLabel ? "contact" : "waitlist";
         const language =
           typeof document !== "undefined" ? document.documentElement.lang || "he" : "he";
+
+        // Fire-and-forget POST to Zapier (Sheets + WhatsApp pipeline).
+        // Read FormData synchronously before React unmounts the form via setDone.
+        const fd = new FormData(e.currentTarget);
+        void fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            form_type: formType,
+            name: String(fd.get("name") ?? ""),
+            purpose,
+            field: String(fd.get("field") ?? ""),
+            phone: String(fd.get("phone") ?? ""),
+            email: String(fd.get("email") ?? ""),
+            subject: String(fd.get("subject") ?? ""),
+            language,
+            source_url: typeof window !== "undefined" ? window.location.href : "",
+            submitted_at: new Date().toISOString(),
+          }),
+        }).catch(() => {});
+
         track("generate_lead", { form_type: formType, purpose, language });
         setDone(true);
       }}
