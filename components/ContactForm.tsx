@@ -17,7 +17,7 @@ function Label({ htmlFor, children }: { htmlFor: string; children: React.ReactNo
   );
 }
 
-// Front-end only form (no backend yet â confirms locally). All fields required.
+// Front-end only form (no backend yet — confirms locally). All fields required.
 export default function ContactForm({ f }: { f: FormContent }) {
   const [purpose, setPurpose] = useState("");
   const [purposeErr, setPurposeErr] = useState(false);
