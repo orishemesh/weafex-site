@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 import { GoogleTagManager } from "@next/third-parties/google";
+import ClickTracker from "@/components/ClickTracker";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -51,6 +52,13 @@ export default function LangLayout({
   return (
     <html lang={lang} dir={isRtl(lang) ? "rtl" : "ltr"} className={heebo.variable}>
       <body className="font-sans antialiased bg-white text-weafex-navy">
+        {/* Defines window.gtag so custom events reach GA4 via the Google tag (GTM). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());",
+          }}
+        />
         <GoogleTagManager gtmId="GTM-TJJS8ZW4" />
         <a href="#main-content" className="skip-link">
           {lang === "he" ? "דלג לתוכן המרכזי" : "Skip to main content"}
@@ -83,6 +91,7 @@ export default function LangLayout({
         <PageTransition>{children}</PageTransition>
         <Footer lang={lang} c={c} />
         <AccessibilityWidget />
+        <ClickTracker />
       </body>
     </html>
   );

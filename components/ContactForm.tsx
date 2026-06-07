@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Check } from "lucide-react";
 import { type FormContent } from "@/lib/i18n";
+import { track } from "@/lib/gtag";
 
 const inputCls =
   "mt-2 w-full rounded-xl border border-weafex-line bg-white px-4 py-3 text-weafex-navy outline-none transition-colors placeholder:text-weafex-muted/50 focus:border-weafex-blue";
@@ -45,6 +46,10 @@ export default function ContactForm({ f }: { f: FormContent }) {
           setPurposeErr(true);
           return;
         }
+        const formType = f.subjectLabel ? "contact" : "waitlist";
+        const language =
+          typeof document !== "undefined" ? document.documentElement.lang || "he" : "he";
+        track("generate_lead", { form_type: formType, purpose, language });
         setDone(true);
       }}
       className="space-y-7 rounded-3xl border border-weafex-line bg-white p-7 md:p-10"

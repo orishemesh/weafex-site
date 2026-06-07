@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Globe } from "lucide-react";
 import { otherLang, type Lang } from "@/lib/i18n";
+import { track } from "@/lib/gtag";
 
 export default function LangToggle({
   lang,
@@ -22,6 +23,7 @@ export default function LangToggle({
   const targetPath = pathname.replace(/^\/(he|en)/, `/${target}`);
 
   const persist = () => {
+    track("language_switch", { to: target, from: lang });
     try {
       document.cookie = `weafex-lang=${target}; path=/; max-age=31536000; samesite=lax`;
       localStorage.setItem("weafex-lang", target);
