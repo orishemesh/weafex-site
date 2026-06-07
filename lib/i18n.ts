@@ -118,9 +118,9 @@ const EMAIL = "support@weafex.com";
 
 const he: Content = {
   dir: "rtl",
-  nav: { home: "בית", about: "אודות", product: "המוצר", contact: "צור קשר", waitlist: "רשימת המתנה" },
+  nav: { home: "בית", about: "אודות", product: "המוצר", contact: "צור קשר", waitlist: "Waiting List" },
   waitlistBtn: {
-    button: "הצטרפו לרשימת ההמתנה",
+    button: "הצטרפו ל-Waiting List",
     confirmed: "תודה! נהיה בקשר ברגע שניפתח.",
     note: "בלי ספאם. עדכון אחד כשנהיה מוכנים.",
   },
@@ -138,7 +138,7 @@ const he: Content = {
       headLead: "הרשת החברתית",
       headRest: "של הסחר הבינלאומי",
       sub: "מקום אחד שבו כל היבואנים, היצואנים ושחקני המפתח של התחום נמצאים יחד, מאומתים, ומתחברים ישירות — בלי מתווכים, בלי לבזבז שבועות על חיפוש.",
-      ctaPrimary: "הצטרפו לרשימת ההמתנה",
+      ctaPrimary: "הצטרפו ל-Waiting List",
       ctaSecondary: "איך זה עובד",
     },
     problem: {
@@ -203,7 +203,7 @@ const he: Content = {
         { title: "לגלול רילסים מהתחום", body: "שימוש חברתי שהופך את Weafex לחלק מהיום-יום — לא רק כלי שפותחים כשצריך עסקה." },
       ],
     },
-    cta: { title: "רוצים לראות את זה ראשונים?", sub: "Weafex תיפתח בקרוב. הצטרפו לרשימת ההמתנה." },
+    cta: { title: "רוצים לראות את זה ראשונים?", sub: "Weafex תיפתח בקרוב. הצטרפו ל-Waiting List." },
   },
 
   about: {
@@ -232,7 +232,7 @@ const he: Content = {
       },
     },
     why: { kicker: "למה עכשיו", title: "התחום עובר מעבר בין-דורי.", body: "הכוח הכלכלי זז מדור שעבד בטלפון, בפגישות פנים-אל-פנים ובקשרים אישיים — לדור חדש שגדל על רשתות חברתיות ומודד הכול בזמן שנחסך. זה הדור שיאמץ את Weafex בטבעיות. ובמקביל, Weafex לא דורשת מהדור הוותיק ללמוד טכנולוגיה חדשה — היא מרגישה כמו רשת חברתית מוכרת. זה הרגע שבו שני הדורות מאמצים אותה יחד." },
-    cta: { title: "רוצים להיות חלק מזה?", sub: "Weafex תיפתח בקרוב. הצטרפו לרשימת ההמתנה." },
+    cta: { title: "רוצים להיות חלק מזה?", sub: "Weafex תיפתח בקרוב. הצטרפו ל-Waiting List." },
   },
 
   contact: {
@@ -259,7 +259,7 @@ const he: Content = {
   },
 
   waitlist: {
-    meta: { title: "רשימת המתנה — Weafex", description: "הצטרפו לרשימת ההמתנה של Weafex ותהיו מהראשונים שמתחברים לרשת." },
+    meta: { title: "Waiting List — Weafex", description: "הצטרפו ל-Waiting List של Weafex ותהיו מהראשונים שמתחברים לרשת." },
     kicker: "טרם השקנו",
     title: "היו מהראשונים ברשת",
     sub: "אנחנו פותחים את Weafex בהדרגה. השאירו פרטים ונעדכן אתכם ברגע שהגישה נפתחת — בלי רעש ובלי ספאם.",
@@ -273,7 +273,7 @@ const he: Content = {
       phoneLabel: "מספר טלפון",
       emailField: "מייל",
       requiredHint: "נא לבחור אפשרות",
-      submit: "הצטרפו לרשימת ההמתנה",
+      submit: "הצטרפו ל-Waiting List",
       confirmed: "תודה! אתם ברשימה — נעדכן אתכם ברגע שניפתח.",
     },
   },
@@ -294,7 +294,7 @@ const he: Content = {
     sections: [
       { heading: "אילו עוגיות בשימוש", body: "עוגיות הכרחיות נדרשות לתפעול האתר ולשמירת העדפות (כמו שפה והגדרות נגישות), והן פועלות תמיד. עוגיות אנליטיקה (Google Analytics) עוזרות לנו להבין כיצד משתמשים באתר, ונטענות רק לאחר קבלת הסכמתך." },
       { heading: "ניהול ההסכמה", body: "בכניסה הראשונה לאתר תוצג הודעת עוגיות. אפשר לבחור ב\u05f4אישור הכול\u05f4 או ב\u05f4רק הכרחיות\u05f4. ניתן לשנות או לבטל את הבחירה בכל עת דרך הקישור \u05f4הגדרות עוגיות\u05f4 בתחתית כל עמוד." },
-      { heading: "המידע שאנחנו אוספים", body: "כשמשאירים פרטים בטופס יצירת הקשר או ברשימת ההמתנה, אנו שומרים את הפרטים שמסרת כדי לחזור אליך. איננו מוכרים מידע אישי לצדדים שלישיים." },
+      { heading: "המידע שאנחנו אוספים", body: "כשמשאירים פרטים בטופס יצירת הקשר או ב-Waiting List, אנו שומרים את הפרטים שמסרת כדי לחזור אליך. איננו מוכרים מידע אישי לצדדים שלישיים." },
       { heading: "יצירת קשר", body: "לשאלות בנושא פרטיות ועוגיות אפשר לפנות לכתובת support@weafex.com." },
     ],
     updated: "מדיניות זו עודכנה לאחרונה ביוני 2026.",
@@ -303,9 +303,9 @@ const he: Content = {
 
 const en: Content = {
   dir: "ltr",
-  nav: { home: "Home", about: "About", product: "Product", contact: "Contact", waitlist: "Waitlist" },
+  nav: { home: "Home", about: "About", product: "Product", contact: "Contact", waitlist: "Waiting List" },
   waitlistBtn: {
-    button: "Join the waitlist",
+    button: "Join the Waiting List",
     confirmed: "Thanks! We'll be in touch the moment we open.",
     note: "No spam. One note when we're ready.",
   },
@@ -323,7 +323,7 @@ const en: Content = {
       headLead: "The social network",
       headRest: "of international trade",
       sub: "One place where all the importers, exporters, and key players come together — verified, connecting directly. No middlemen, no weeks wasted searching.",
-      ctaPrimary: "Join the waitlist",
+      ctaPrimary: "Join the Waiting List",
       ctaSecondary: "How it works",
     },
     problem: {
@@ -387,7 +387,7 @@ const en: Content = {
         { title: "Scroll reels from your field", body: "A social habit that makes Weafex part of your day — not just a tool you open when you need a deal." },
       ],
     },
-    cta: { title: "Want to see it first?", sub: "Weafex opens soon. Join the waitlist." },
+    cta: { title: "Want to see it first?", sub: "Weafex opens soon. Join the Waiting List." },
   },
 
   about: {
@@ -416,7 +416,7 @@ const en: Content = {
       },
     },
     why: { kicker: "Why now", title: "The industry is going through a generational shift.", body: "Economic power is moving from a generation that did business over the phone, in face-to-face meetings and personal relationships — to a new generation that grew up on social media and measures everything in time saved. That's the generation that will adopt Weafex naturally. And Weafex doesn't ask the older generation to learn new technology — it feels like a social network they already know. This is the moment both generations adopt it together." },
-    cta: { title: "Want to be part of it?", sub: "Weafex opens soon. Join the waitlist." },
+    cta: { title: "Want to be part of it?", sub: "Weafex opens soon. Join the Waiting List." },
   },
 
   contact: {
@@ -443,7 +443,7 @@ const en: Content = {
   },
 
   waitlist: {
-    meta: { title: "Waitlist — Weafex", description: "Join the Weafex waitlist and be among the first to connect to the network." },
+    meta: { title: "Waiting List — Weafex", description: "Join the Weafex Waiting List and be among the first to connect to the network." },
     kicker: "Pre-launch",
     title: "Be among the first on the network",
     sub: "We're opening Weafex gradually. Leave your details and we'll let you know the moment access opens — no noise, no spam.",
@@ -457,7 +457,7 @@ const en: Content = {
       phoneLabel: "Phone number",
       emailField: "Email",
       requiredHint: "Please choose an option",
-      submit: "Join the waitlist",
+      submit: "Join the Waiting List",
       confirmed: "Thanks! You're on the list — we'll let you know the moment we open.",
     },
   },
@@ -478,7 +478,7 @@ const en: Content = {
     sections: [
       { heading: "Which cookies we use", body: "Essential cookies are required to run the site and remember your preferences (such as language and accessibility settings), and are always active. Analytics cookies (Google Analytics) help us understand how the site is used and load only after you give consent." },
       { heading: "Managing your consent", body: "On your first visit a cookie notice appears. You can choose \u201cAccept all\u201d or \u201cOnly essential\u201d. You can change or withdraw your choice at any time via the \u201cCookie settings\u201d link in the footer of every page." },
-      { heading: "Information we collect", body: "When you submit the contact or waitlist form, we keep the details you provide so we can get back to you. We do not sell personal information to third parties." },
+      { heading: "Information we collect", body: "When you submit the contact or Waiting List form, we keep the details you provide so we can get back to you. We do not sell personal information to third parties." },
       { heading: "Contact", body: "For privacy and cookie questions, contact support@weafex.com." },
     ],
     updated: "This policy was last updated in June 2026.",

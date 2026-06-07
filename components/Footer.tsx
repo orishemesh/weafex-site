@@ -32,7 +32,7 @@ export default function Footer({ lang, c }: { lang: Lang; c: Content }) {
 
         <div>
           <p className="label">{c.footer.nav}</p>
-          <ul className="mt-5 space-y-3">
+          <ul className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3">
             {links.map((l) => (
               <li key={l.href}>
                 <Link
