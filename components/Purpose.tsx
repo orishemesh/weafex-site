@@ -24,12 +24,15 @@ export default function Purpose({ c }: { c: Content }) {
                 {/* zigzag: alternate which side the phone sits on */}
                 <div className={i % 2 === 0 ? "md:order-2" : "md:order-1"}>
                   <div className="flex items-center justify-center py-2">
-                    <PhoneCarousel images={SCREENS[i] ?? SCREENS[0]} alt="Weafex" />
+                    <PhoneCarousel
+                      images={SCREENS[i] ?? SCREENS[0]}
+                      alt={`${f.title} — צילום מסך מאפליקציית Weafex`}
+                    />
                   </div>
                 </div>
                 <div className={i % 2 === 0 ? "md:order-1" : "md:order-2"}>
                   <span className="text-sm font-semibold text-weafex-muted/60">0{i + 1}</span>
-                  <h3 className="h-sub mt-5 text-weafex-navy">{f.title}</h3>
+                  <h2 className="h-sub mt-5 text-weafex-navy">{f.title}</h2>
                   <p className="mt-5 max-w-md text-lg leading-relaxed text-weafex-muted">{f.body}</p>
                 </div>
               </div>

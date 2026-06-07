@@ -30,7 +30,8 @@ export default function PhoneCarousel({
           <Image
             key={src}
             src={src}
-            alt={alt}
+            alt={idx === i ? alt : ""}
+            aria-hidden={idx === i ? undefined : true}
             fill
             sizes="250px"
             priority={idx === 0}
@@ -40,7 +41,7 @@ export default function PhoneCarousel({
           />
         ))}
       </div>
-      <div className="mt-5 flex justify-center gap-1.5">
+      <div className="mt-5 flex justify-center gap-1.5" aria-hidden="true">
         {images.map((_, idx) => (
           <span
             key={idx}

@@ -7,11 +7,11 @@ import { type FormContent } from "@/lib/i18n";
 const inputCls =
   "mt-2 w-full rounded-xl border border-weafex-line bg-white px-4 py-3 text-weafex-navy outline-none transition-colors placeholder:text-weafex-muted/50 focus:border-weafex-blue";
 
-function Label({ children }: { children: React.ReactNode }) {
+function Label({ htmlFor, children }: { htmlFor: string; children: React.ReactNode }) {
   return (
-    <label className="block text-sm font-semibold text-weafex-navy">
+    <label htmlFor={htmlFor} className="block text-sm font-semibold text-weafex-navy">
       {children}
-      <span className="text-weafex-coral"> *</span>
+      <span className="text-weafex-coral" aria-hidden="true"> *</span>
     </label>
   );
 }
@@ -24,9 +24,13 @@ export default function ContactForm({ f }: { f: FormContent }) {
 
   if (done) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-3xl border border-weafex-line bg-white p-12 text-center">
+      <div
+        role="status"
+        aria-live="polite"
+        className="flex flex-col items-center justify-center rounded-3xl border border-weafex-line bg-white p-12 text-center"
+      >
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-weafex-coral text-white">
-          <Check className="h-6 w-6" strokeWidth={2.6} />
+          <Check className="h-6 w-6" strokeWidth={2.6} aria-hidden="true" />
         </span>
         <p className="mt-5 max-w-sm text-lg font-medium text-weafex-navy">{f.confirmed}</p>
       </div>
@@ -46,20 +50,21 @@ export default function ContactForm({ f }: { f: FormContent }) {
       className="space-y-7 rounded-3xl border border-weafex-line bg-white p-7 md:p-10"
     >
       <div>
-        <Label>{f.nameLabel}</Label>
-        <input type="text" required className={inputCls} />
+        <Label htmlFor="cf-name">{f.nameLabel}</Label>
+        <input id="cf-name" name="name" type="text" required className={inputCls} />
       </div>
 
-      <fieldset>
+      <fieldset aria-describedby={purposeErr ? "cf-purpose-err" : undefined}>
         <legend className="text-sm font-semibold text-weafex-navy">
           {f.purposeLabel}
-          <span className="text-weafex-coral"> *</span>
+          <span className="text-weafex-coral" aria-hidden="true"> *</span>
         </legend>
         <div className="mt-3 flex flex-wrap gap-2.5">
           {f.purposeOptions.map((opt) => (
             <button
               type="button"
               key={opt}
+              aria-pressed={purpose === opt}
               onClick={() => {
                 setPurpose(opt);
                 setPurposeErr(false);
@@ -74,29 +79,35 @@ export default function ContactForm({ f }: { f: FormContent }) {
             </button>
           ))}
         </div>
-        {purposeErr && <p className="mt-2 text-sm text-weafex-coral">{f.requiredHint}</p>}
+        <p
+          id="cf-purpose-err"
+          aria-live="polite"
+          className={`mt-2 text-sm text-weafex-coral ${purposeErr ? "" : "sr-only"}`}
+        >
+          {purposeErr ? f.requiredHint : ""}
+        </p>
       </fieldset>
 
       <div>
-        <Label>{f.fieldLabel}</Label>
-        <input type="text" required className={inputCls} />
+        <Label htmlFor="cf-field">{f.fieldLabel}</Label>
+        <input id="cf-field" name="field" type="text" required className={inputCls} />
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <Label>{f.phoneLabel}</Label>
-          <input type="tel" inputMode="tel" required className={inputCls} />
+          <Label htmlFor="cf-phone">{f.phoneLabel}</Label>
+          <input id="cf-phone" name="phone" type="tel" inputMode="tel" required className={inputCls} />
         </div>
         <div>
-          <Label>{f.emailField}</Label>
-          <input type="email" required className={inputCls} />
+          <Label htmlFor="cf-email">{f.emailField}</Label>
+          <input id="cf-email" name="email" type="email" required className={inputCls} />
         </div>
       </div>
 
       {f.subjectLabel && (
         <div>
-          <label className="block text-sm font-semibold text-weafex-navy">{f.subjectLabel}</label>
-          <input type="text" className={inputCls} />
+          <label htmlFor="cf-subject" className="block text-sm font-semibold text-weafex-navy">{f.subjectLabel}</label>
+          <input id="cf-subject" name="subject" type="text" className={inputCls} />
         </div>
       )}
 

@@ -32,7 +32,7 @@ export default function WaitlistPage({ params }: { params: { lang: string } }) {
             <ul className="space-y-6">
               {w.points.map((p) => (
                 <li key={p} className="flex items-start gap-4">
-                  <Check className="mt-1 h-6 w-6 shrink-0 text-weafex-coral" strokeWidth={2.2} />
+                  <Check className="mt-1 h-6 w-6 shrink-0 text-weafex-coral" strokeWidth={2.2} aria-hidden="true" />
                   <span className="text-xl font-medium leading-snug text-weafex-navy">{p}</span>
                 </li>
               ))}

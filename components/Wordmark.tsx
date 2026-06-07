@@ -11,7 +11,8 @@ export default function Wordmark({
     <span className={`flex items-center gap-2.5 ${className}`}>
       <Image
         src="/logo.svg"
-        alt="Weafex"
+        alt=""
+        aria-hidden
         width={60}
         height={60}
         className="h-[3.25rem] w-[3.25rem] md:h-[3.75rem] md:w-[3.75rem]"

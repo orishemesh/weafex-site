@@ -21,9 +21,10 @@ export default function WaitlistButton({
     return (
       <div
         role="status"
+        aria-live="polite"
         className="inline-flex items-center gap-2 rounded-full bg-weafex-navy px-6 py-3.5 text-base font-semibold text-white"
       >
-        <Check className="h-5 w-5 text-weafex-coral" strokeWidth={2.6} />
+        <Check className="h-5 w-5 text-weafex-coral" strokeWidth={2.6} aria-hidden="true" />
         <span>{confirmed}</span>
       </div>
     );
@@ -41,6 +42,7 @@ export default function WaitlistButton({
           rtl ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"
         }`}
         strokeWidth={2}
+        aria-hidden="true"
       />
     </button>
   );

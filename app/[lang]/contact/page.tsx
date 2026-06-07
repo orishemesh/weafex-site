@@ -38,7 +38,7 @@ export default function ContactPage({ params }: { params: { lang: string } }) {
                 href={`mailto:${ct.email}`}
                 className="group mt-4 inline-flex items-center gap-3 text-weafex-navy transition-colors hover:text-weafex-coral"
               >
-                <Mail className="h-6 w-6 text-weafex-muted transition-colors group-hover:text-weafex-coral" strokeWidth={1.6} />
+                <Mail className="h-6 w-6 text-weafex-muted transition-colors group-hover:text-weafex-coral" strokeWidth={1.6} aria-hidden="true" />
                 <span className="text-xl font-semibold">{ct.email}</span>
               </a>
 
@@ -54,6 +54,7 @@ export default function ContactPage({ params }: { params: { lang: string } }) {
                       isRtl(lang) ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"
                     }`}
                     strokeWidth={2}
+                    aria-hidden="true"
                   />
                 </Link>
               </div>

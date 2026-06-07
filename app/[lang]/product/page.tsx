@@ -39,7 +39,7 @@ export default function ProductPage({ params }: { params: { lang: string } }) {
             <ul className="mt-8 space-y-4 border-t border-white/10 pt-8">
               {v.points.map((p) => (
                 <li key={p} className="flex items-start gap-3">
-                  <Check className="mt-1 h-5 w-5 shrink-0 text-weafex-coral" strokeWidth={2.4} />
+                  <Check className="mt-1 h-5 w-5 shrink-0 text-weafex-coral" strokeWidth={2.4} aria-hidden="true" />
                   <span className="text-white/85">{p}</span>
                 </li>
               ))}

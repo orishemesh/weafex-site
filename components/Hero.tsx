@@ -91,6 +91,7 @@ export default function Hero({ lang, c }: { lang: Lang; c: Content }) {
                 rtl ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"
               }`}
               strokeWidth={2}
+              aria-hidden="true"
             />
           </Link>
         </motion.div>

@@ -26,7 +26,7 @@ export default function Nav({ lang, c }: { lang: Lang; c: Content }) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-weafex-line/70 bg-white/80 backdrop-blur-md">
-      <div className="shell flex h-16 items-center justify-between gap-3 md:h-20">
+      <nav aria-label="ניווט ראשי" className="shell flex h-16 items-center justify-between gap-3 md:h-20">
         <Link href={base} aria-label="Weafex" className="shrink-0">
           <Wordmark />
         </Link>
@@ -64,19 +64,25 @@ export default function Nav({ lang, c }: { lang: Lang; c: Content }) {
           <button
             type="button"
             onClick={() => setOpen(true)}
-            aria-label="Menu"
+            aria-label="פתח תפריט"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
             className="inline-flex h-9 w-9 items-center justify-center text-weafex-navy lg:hidden"
           >
-            <Menu className="h-6 w-6" strokeWidth={1.8} />
+            <Menu className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
           </button>
         </div>
-      </div>
+      </nav>
 
       {typeof document !== "undefined" &&
         createPortal(
           <AnimatePresence>
             {open && (
               <motion.div
+                id="mobile-menu"
+                role="dialog"
+                aria-modal="true"
+                aria-label="תפריט ניווט"
                 initial={false}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -88,14 +94,15 @@ export default function Nav({ lang, c }: { lang: Lang; c: Content }) {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                aria-label="Close"
+                aria-label="סגור תפריט"
                 className="inline-flex h-10 w-10 items-center justify-center text-weafex-navy"
               >
-                <X className="h-6 w-6" strokeWidth={1.8} />
+                <X className="h-6 w-6" strokeWidth={1.8} aria-hidden="true" />
               </button>
             </div>
 
-            <motion.div
+            <motion.nav
+              aria-label="ניווט ראשי"
               initial="hidden"
               animate="show"
               variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } } }}
@@ -118,7 +125,7 @@ export default function Nav({ lang, c }: { lang: Lang; c: Content }) {
                   </Link>
                 </motion.div>
               ))}
-            </motion.div>
+            </motion.nav>
 
             <div className="flex items-center justify-between pt-6">
               <LangToggle lang={lang} label={c.toggle.label} to={c.toggle.to} />

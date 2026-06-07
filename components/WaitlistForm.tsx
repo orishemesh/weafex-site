@@ -14,8 +14,8 @@ export default function WaitlistForm({ f }: { f: FormContent }) {
 
   if (done) {
     return (
-      <div className="inline-flex items-center gap-2 rounded-full bg-weafex-navy px-6 py-3.5 text-base font-semibold text-white">
-        <Check className="h-5 w-5 text-weafex-coral" strokeWidth={2.6} />
+      <div role="status" aria-live="polite" className="inline-flex items-center gap-2 rounded-full bg-weafex-navy px-6 py-3.5 text-base font-semibold text-white">
+        <Check className="h-5 w-5 text-weafex-coral" strokeWidth={2.6} aria-hidden="true" />
         <span>{f.confirmed}</span>
       </div>
     );
@@ -30,12 +30,12 @@ export default function WaitlistForm({ f }: { f: FormContent }) {
       className="flex flex-col gap-4 sm:flex-row sm:items-end"
     >
       <div className="flex-1">
-        <label className="block text-sm font-semibold text-weafex-navy">{f.nameLabel}</label>
-        <input type="text" className={inputCls} />
+        <label htmlFor="wf-name" className="block text-sm font-semibold text-weafex-navy">{f.nameLabel}</label>
+        <input id="wf-name" name="name" type="text" className={inputCls} />
       </div>
       <div className="flex-1">
-        <label className="block text-sm font-semibold text-weafex-navy">{f.emailLabel}</label>
-        <input type="email" required className={inputCls} />
+        <label htmlFor="wf-email" className="block text-sm font-semibold text-weafex-navy">{f.emailLabel}</label>
+        <input id="wf-email" name="email" type="email" required className={inputCls} />
       </div>
       <button
         type="submit"

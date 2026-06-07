@@ -43,7 +43,7 @@ export default function LangToggle({
       title={label}
       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm font-semibold transition-colors ${styles}`}
     >
-      <Globe className="h-[1.05rem] w-[1.05rem]" strokeWidth={2.2} />
+      <Globe className="h-[1.05rem] w-[1.05rem]" strokeWidth={2.2} aria-hidden="true" />
       <span>{to}</span>
     </Link>
   );

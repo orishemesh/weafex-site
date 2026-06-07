@@ -11,10 +11,11 @@ export default function Footer({ lang, c }: { lang: Lang; c: Content }) {
     { href: `${base}/product`, label: c.nav.product },
     { href: `${base}/contact`, label: c.nav.contact },
     { href: `${base}/waitlist`, label: c.nav.waitlist },
+    { href: `${base}/accessibility`, label: lang === "he" ? "הצהרת נגישות" : "Accessibility" },
   ];
 
   return (
-    <footer className="border-t border-weafex-line bg-white">
+    <footer aria-label="כותרת תחתונה" className="border-t border-weafex-line bg-white">
       <div className="shell grid gap-12 py-16 md:grid-cols-[1.6fr_1fr_1fr] md:py-20">
         <div className="max-w-sm">
           <Wordmark />

@@ -36,7 +36,7 @@ export default function ExploreRoutes({ lang, c }: { lang: Lang; c: Content }) {
                 </div>
                 <span className="mt-12 inline-flex items-center gap-2 text-base font-semibold text-weafex-navy transition-colors group-hover:text-weafex-coral">
                   {card.link}
-                  <ArrowRight className={arrow} strokeWidth={2} />
+                  <ArrowRight className={arrow} strokeWidth={2} aria-hidden="true" />
                 </span>
               </Link>
             </Reveal>

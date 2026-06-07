@@ -36,6 +36,7 @@ export default function WaitlistCTA({
                 rtl ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1"
               }`}
               strokeWidth={2}
+              aria-hidden="true"
             />
           </Link>
         </Reveal>

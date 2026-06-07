@@ -62,7 +62,7 @@ export default function AudienceFlow({
         {/* importers (right in RTL) */}
         <SideCard
           tone="blue"
-          icon={<PackageSearch className="h-6 w-6" strokeWidth={1.9} />}
+          icon={<PackageSearch className="h-6 w-6" strokeWidth={1.9} aria-hidden="true" />}
           title={importersTitle}
           body={importersBody}
         />
@@ -71,7 +71,7 @@ export default function AudienceFlow({
         <div className="relative flex flex-col items-center px-4 py-2 md:px-10">
           <div className="relative z-10 flex h-24 w-24 items-center justify-center rounded-full bg-white ring-1 ring-weafex-line shadow-[0_20px_45px_-20px_rgba(17,24,39,0.45)]">
             <div aria-hidden className="absolute -inset-3 rounded-full bg-gradient-to-br from-weafex-blue/20 to-weafex-coral/25 blur-xl" />
-            <Image src="/logo.svg" alt="Weafex" width={44} height={44} className="relative h-11 w-11" />
+            <Image src="/logo.svg" alt="" aria-hidden width={44} height={44} className="relative h-11 w-11" />
           </div>
           <span className="mt-3 text-xs font-extrabold tracking-tight text-weafex-coral">Weafex</span>
         </div>
@@ -79,7 +79,7 @@ export default function AudienceFlow({
         {/* exporters (left in RTL) */}
         <SideCard
           tone="coral"
-          icon={<Send className="h-6 w-6" strokeWidth={1.9} />}
+          icon={<Send className="h-6 w-6" strokeWidth={1.9} aria-hidden="true" />}
           title={exportersTitle}
           body={exportersBody}
         />

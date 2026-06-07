@@ -11,14 +11,14 @@ export default function FounderPhoto({ alt, note }: { alt: string; note: string 
   if (err) {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-weafex-paper to-white text-weafex-muted">
-        <User className="h-10 w-10" strokeWidth={1.2} />
+        <User className="h-10 w-10" strokeWidth={1.2} aria-hidden="true" />
         <span className="text-[0.65rem] font-semibold uppercase tracking-[0.18em]">{note}</span>
       </div>
     );
   }
 
-  // eslint-disable-next-line @next/next/no-img-element
   return (
+    // eslint-disable-next-line @next/next/no-img-element -- needs onError fallback; next/image doesn't fit here
     <img
       src="/founder.jpg"
       alt={alt}

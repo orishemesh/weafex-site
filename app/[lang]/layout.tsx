@@ -5,6 +5,7 @@ import { LANGS, content, isRtl, type Lang } from "@/lib/i18n";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
+import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const heebo = Heebo({
   subsets: ["hebrew", "latin"],
@@ -49,6 +50,9 @@ export default function LangLayout({
   return (
     <html lang={lang} dir={isRtl(lang) ? "rtl" : "ltr"} className={heebo.variable}>
       <body className="font-sans antialiased bg-white text-weafex-navy">
+        <a href="#main-content" className="skip-link">
+          {lang === "he" ? "דלג לתוכן המרכזי" : "Skip to main content"}
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -76,6 +80,7 @@ export default function LangLayout({
         <Nav lang={lang} c={c} />
         <PageTransition>{children}</PageTransition>
         <Footer lang={lang} c={c} />
+        <AccessibilityWidget />
       </body>
     </html>
   );
