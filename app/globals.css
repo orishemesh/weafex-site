@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heebo: "Heebo", system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ffffff;
+  color: #111827;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .shell { padding-left: 2.5rem; padding-right: 2.5rem; }
+  }
+
+  /* Generous editorial vertical rhythm */
+  .section-pad { padding-top: 6.5rem; padding-bottom: 6.5rem; }
+  @media (min-width: 768px) {
+    .section-pad { padding-top: 11rem; padding-bottom: 11rem; }
+  }
+
+  /* Display typography */
+  .h-hero {
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    font-size: clamp(3rem, 11vw, 9.5rem);
+  }
+  .h-section {
+    font-weight: 400;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    font-size: clamp(2.25rem, 5.5vw, 4.75rem);
+  }
+  .h-sub {
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+  }
+
+  /* Small uppercase label (the editorial eyebrow) */
+  .label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #9aa1ac;
+  }
+
+  /* Restrained coral underline accent for a single word */
+  .accent-coral { color: #ff5f5f; }
+}
