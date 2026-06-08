@@ -17,7 +17,7 @@ function Label({ htmlFor, children }: { htmlFor: string; children: React.ReactNo
   );
 }
 
-// Front-end only form (no backend yet — confirms locally). All fields required.
+// Submissions POST to /api/leads (server-side proxy to Google Sheet via Apps Script).
 export default function ContactForm({ f }: { f: FormContent }) {
   const [purpose, setPurpose] = useState("");
   const [purposeErr, setPurposeErr] = useState(false);
@@ -40,15 +40,38 @@ export default function ContactForm({ f }: { f: FormContent }) {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
         if (!purpose) {
           setPurposeErr(true);
           return;
         }
+        const form = e.currentTarget;
+        const data = new FormData(form);
         const formType = f.subjectLabel ? "contact" : "waitlist";
         const language =
           typeof document !== "undefined" ? document.documentElement.lang || "he" : "he";
+        const payload = {
+          form_type: formType,
+          name: String(data.get("name") || ""),
+          purpose,
+          field: String(data.get("field") || ""),
+          phone: String(data.get("phone") || ""),
+          email: String(data.get("email") || ""),
+          subject: String(data.get("subject") || ""),
+          language,
+          source_url: typeof window !== "undefined" ? window.location.href : "",
+          submitted_at: new Date().toISOString(),
+        };
+        try {
+          await fetch("/api/leads", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+        } catch (err) {
+          console.error("leads POST failed", err);
+        }
         track("generate_lead", { form_type: formType, purpose, language });
         setDone(true);
       }}
